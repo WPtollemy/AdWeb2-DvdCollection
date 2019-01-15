@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDvdTable extends Migration
+class CreateDvdsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateDvdTable extends Migration
      */
     public function up()
     {
-        Schema::create('dvd', function (Blueprint $table) {
+        Schema::create('dvds', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->text('decription');
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateDvdTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dvd');
+        Schema::dropIfExists('dvds');
     }
 }
