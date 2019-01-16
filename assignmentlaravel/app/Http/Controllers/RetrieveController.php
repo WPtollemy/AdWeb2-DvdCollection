@@ -13,4 +13,18 @@ class RetrieveController extends Controller
 
         return view('home', compact('dvds'));
     }
+
+    public function search()
+    {
+        $dvds = new Dvd();
+        $searchKey = request('searchTitle');
+
+        if ($searchKey == '') {
+            return redirect('/');
+        }
+
+        $dvds = $dvds->where('title', $searchKey)->get(); 
+
+        return view('home', compact('dvds'));
+    }
 }

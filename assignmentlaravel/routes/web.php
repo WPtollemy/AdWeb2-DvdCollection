@@ -24,3 +24,5 @@ Route::post('/create', 'CreateController@create');
 Route::patch('dvds/{dvd}', 'DvdsController@update');
 
 Route::delete('dvds/{dvd}', 'DvdsController@destroy');
+
+Route::get('/search', 'RetrieveController@search');

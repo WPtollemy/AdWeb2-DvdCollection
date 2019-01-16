@@ -12,6 +12,41 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+  <div class="container">
+<div class="row">
+  <div class="col-sm-6">
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Add DVD</button>
+    <div id="demo" class="collapse">
+      <form action="/create" method="POST">
+        {{ csrf_field() }}
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputTitle">Title</label>
+            <input class="form-control" id="inputTitle" name="title" placeholder="Title">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputDescription">Description</label>
+            <input class="form-control" id="inputDescription" name ="description" placeholder="Description">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <form action="/search">
+      {{ csrf_field() }}
+      <input class="text" id="searchTitle" name="searchTitle" placeholder="Title">
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+
+</div>
+
+  </div>
+
   <div>
     <table class="table table-dark">
       <thead>
@@ -34,27 +69,6 @@
         @endforeach
       </tbody>
     </table>
-  </div>
-  <div class="container">
-    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Add DVD</button>
-    <div id="demo" class="collapse">
-      <form action="/create" method="POST">
-        {{ csrf_field() }}
-
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputTitle">Title</label>
-            <input class="form-control" id="inputTitle" name="title" placeholder="Title">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputDescription">Description</label>
-            <input class="form-control" id="inputDescription" name ="description" placeholder="Description">
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Add</button>
-      </form>
-    </div>
-
   </div>
 </body>
 </html>
