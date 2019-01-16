@@ -22,3 +22,5 @@ Route::get('dvds/{dvd}/edit', 'DvdsController@edit');
 Route::post('/create', 'CreateController@create');
 
 Route::patch('dvds/{dvd}', 'DvdsController@update');
+
+Route::delete('dvds/{dvd}', 'DvdsController@destroy');
