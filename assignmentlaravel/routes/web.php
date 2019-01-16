@@ -17,4 +17,8 @@ Route::get('/welcome', function () {
 
 Route::get('/', 'RetrieveController@home');
 
+Route::get('dvds/{dvd}/edit', 'DvdsController@edit');
+
 Route::post('/create', 'CreateController@create');
+
+Route::patch('dvds/{dvd}', 'DvdsController@update');
