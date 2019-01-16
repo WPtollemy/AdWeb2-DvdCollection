@@ -34,7 +34,7 @@
       <form action="/dvds/{{ $dvd->id }}" method="POST">
         {{ method_field('DELETE') }}
         {{ csrf_field() }}
-        <button type="submit" class="btn">Delete DVD</button>
+        <button type="submit" class="btn btn-danger">Delete DVD</button>
       </form>
 
   </div>
