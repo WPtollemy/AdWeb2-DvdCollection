@@ -27,8 +27,10 @@ class DvdsController extends Controller
         return view('dvds.edit', compact('dvd'));
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-        dd('hello');
+        Dvd::find($id)->delete();
+
+        return redirect('/');
     }
 }
