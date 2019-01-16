@@ -14,8 +14,7 @@
 <body>
   <div class="container">
     <h1 class="title">Edit DVD</h1>
-    <div id="demo">
-      <form action="/dvds/{{ $dvd->id }}" method="POST">
+      <form action="/dvds/{{ $dvd->id }}" method="POST" style="margin-bottom: 1em;">
         {{ method_field('PATCH') }}
         {{ csrf_field() }}
 
@@ -31,7 +30,12 @@
         </div>
         <button type="submit" class="btn btn-primary">Update DVD</button>
       </form>
-    </div>
+
+      <form action="/dvds/{{ $dvd->id }}" method="POST">
+        {{ method_field('DELETE') }}
+        {{ csrf_field() }}
+        <button type="submit" class="btn">Delete DVD</button>
+      </form>
 
   </div>
 </body>

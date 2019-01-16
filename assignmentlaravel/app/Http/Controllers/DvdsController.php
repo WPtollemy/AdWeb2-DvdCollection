@@ -27,7 +27,8 @@ class DvdsController extends Controller
         return view('dvds.edit', compact('dvd'));
     }
 
-    public function delete()
+    public function destroy()
     {
+        dd('hello');
     }
 }
