@@ -11,7 +11,7 @@ class RetrieveController extends Controller
     {
         $dvds = Dvd::all();
 
-        return view('home', compact('dvds'));
+        return view('dvds.dvds', compact('dvds'));
     }
 
     public function search()
@@ -25,6 +25,6 @@ class RetrieveController extends Controller
 
         $dvds = $dvds->where('title', $searchKey)->get(); 
 
-        return view('home', compact('dvds'));
+        return view('dvds.dvds', compact('dvds'));
     }
 }

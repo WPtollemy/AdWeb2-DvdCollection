@@ -11,32 +11,33 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto col-md-11">
+                    <ul class="navbar-nav mr-auto">
 
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right ml-auto">
+                    <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -72,31 +73,7 @@
         </nav>
 
         <main class="py-4">
-            <div class="container">
-              <h1 class="title">Edit DVD</h1>
-              <form action="/dvds/{{ $dvd->id }}" method="POST" style="margin-bottom: 1em;">
-                {{ method_field('PATCH') }}
-                {{ csrf_field() }}
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="inputTitle">Title</label>
-                    <input class="form-control" id="inputTitle" name="title" placeholder="Title" value="{{ $dvd->title }}">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputDescription">Description</label>
-                    <input class="form-control" id="inputDescription" name ="description" placeholder="Description" value="{{ $dvd->description }}">
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Update DVD</button>
-              </form>
-
-              <form action="/dvds/{{ $dvd->id }}" method="POST">
-                {{ method_field('DELETE') }}
-                {{ csrf_field() }}
-                <button type="submit" class="btn btn-danger">Delete DVD</button>
-              </form>
-            </div>
+            @yield('content')
         </main>
     </div>
 </body>

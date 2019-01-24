@@ -15,14 +15,20 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/', 'RetrieveController@home');
+Route::get('/', function () {
+    return redirect('/dvds');
+});
 
-Route::get('dvds/{dvd}/edit', 'DvdsController@edit');
+Route::get('/dvds', 'RetrieveController@home')->middleware('auth');
 
-Route::post('/create', 'CreateController@create');
+Route::get('dvds/{dvd}/edit', 'DvdsController@edit')->middleware('auth');
 
-Route::patch('dvds/{dvd}', 'DvdsController@update');
+Route::post('/create', 'CreateController@create')->middleware('auth');
 
-Route::delete('dvds/{dvd}', 'DvdsController@destroy');
+Route::patch('dvds/{dvd}', 'DvdsController@update')->middleware('auth');
 
-Route::get('/search', 'RetrieveController@search');
+Route::delete('dvds/{dvd}', 'DvdsController@destroy')->middleware('auth');
+
+Route::get('/search', 'RetrieveController@search')->middleware('auth');
+
+Auth::routes();
