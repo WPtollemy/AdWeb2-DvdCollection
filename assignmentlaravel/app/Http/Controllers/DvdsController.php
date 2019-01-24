@@ -7,6 +7,19 @@ use App\Dvd;
 
 class DvdsController extends Controller
 {
+
+    //
+    public function create()
+    {
+        //Stub
+        $dvd = new Dvd();
+        $dvd->title = request('title');
+        $dvd->description = request('description');
+        $dvd->save();
+
+        return redirect('/');;
+    }
+
     //
     public function update($id)
     {
@@ -32,5 +45,26 @@ class DvdsController extends Controller
         Dvd::find($id)->delete();
 
         return redirect('/');
+    }
+
+    public function home()
+    {
+        $dvds = Dvd::all();
+
+        return view('dvds.dvds', compact('dvds'));
+    }
+
+    public function search()
+    {
+        $dvds = new Dvd();
+        $searchKey = request('searchTitle');
+
+        if ($searchKey == '') {
+            return redirect('/');
+        }
+
+        $dvds = $dvds->where('title', $searchKey)->get(); 
+
+        return view('dvds.dvds', compact('dvds'));
     }
 }
