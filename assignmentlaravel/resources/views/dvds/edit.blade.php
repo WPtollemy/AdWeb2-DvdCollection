@@ -25,7 +25,7 @@
     <div id="app">
         <nav class="navbar navbar-inverse">
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+                Home
             </a>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
