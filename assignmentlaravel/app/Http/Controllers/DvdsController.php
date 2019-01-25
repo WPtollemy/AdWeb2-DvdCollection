@@ -69,11 +69,13 @@ class DvdsController extends Controller
         $dvds = new Dvd();
         $searchKey = request('searchTitle');
 
+        //If search term is nothing just display all DVDs
         if ($searchKey == '') {
             return redirect('/');
         }
 
-        $dvds = $dvds->where('title', $searchKey)->get(); 
+        //Search for similar values not exact
+        $dvds = $dvds->where('title', 'LIKE', '%'.$searchKey.'%')->get(); 
 
         return view('dvds.dvds', compact('dvds'));
     }
