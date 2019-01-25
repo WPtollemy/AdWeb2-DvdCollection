@@ -71,6 +71,15 @@
 
         <main class="py-4">
           <h1>DVD Sytem</h1>
+          @if ($errors->any())
+            <div class="alert alert-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+          @endif
           <div style="padding-top: 1em; padding-left: 1em;">
             <div class="row">
               <div class="col-sm-8">
@@ -82,11 +91,11 @@
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="inputTitle">Title</label>
-                        <input class="form-control" id="inputTitle" name="title" placeholder="Title">
+                        <input class="form-control" id="inputTitle" name="title" placeholder="Title" required>
                       </div>
                       <div class="form-group col-md-6">
                         <label for="inputDescription">Description</label>
-                        <input class="form-control" id="inputDescription" name ="description" placeholder="Description">
+                        <input class="form-control" id="inputDescription" name ="description" placeholder="Description" required>
                       </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Add</button>

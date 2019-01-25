@@ -8,10 +8,13 @@ use App\Dvd;
 class DvdsController extends Controller
 {
 
-    //
     public function create()
     {
-        //Stub
+        request()->validate([
+            'title'=> 'required',
+            'description' => ['required', 'min:4']
+        ]);
+
         $dvd = new Dvd();
         $dvd->title = request('title');
         $dvd->description = request('description');
@@ -20,9 +23,13 @@ class DvdsController extends Controller
         return redirect('/');;
     }
 
-    //
     public function update($id)
     {
+        request()->validate([
+            'title'=> 'required',
+            'description' => ['required', 'min:4']
+        ]);
+
         $dvd = Dvd::find($id);
 
         $dvd->title = request('title');

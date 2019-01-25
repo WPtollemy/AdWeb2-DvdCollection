@@ -72,18 +72,27 @@
         <main class="py-4">
             <div class="container">
               <h1 class="title">Edit DVD</h1>
+              @if ($errors->any())
+                <div class="alert alert-danger">
+                  <ul>
+                    @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                    @endforeach
+                  </ul>
+                </div>
+              @endif
               <form action="/dvds/{{ $dvd->id }}" method="POST" style="margin-bottom: 1em;">
                 {{ method_field('PATCH') }}
                 {{ csrf_field() }}
 
                 <div class="form-row">
-                  <div class="form-group">
-                    <label for="inputTitle">Title</label>
-                    <input class="form-control" id="inputTitle" name="title" placeholder="Title" value="{{ $dvd->title }}">
+                  <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
+                    <label class="control-label" for="inputTitle">Title</label>
+                    <input class="form-control" id="inputTitle" name="title" placeholder="Title" required value="{{ $dvd->title }}">
                   </div>
-                  <div class="form-group">
-                    <label for="inputDescription">Description</label>
-                    <input class="form-control" id="inputDescription" name ="description" placeholder="Description" value="{{ $dvd->description }}">
+                  <div class="form-group {{ $errors->has('description') ? 'has-error' : '' }}">
+                    <label class="control-label" for="inputDescription">Description</label>
+                    <input class="form-control" id="inputDescription" name ="description" placeholder="Description" required value="{{ $dvd->description }}">
                   </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Update DVD</button>
