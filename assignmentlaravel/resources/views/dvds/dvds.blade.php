@@ -85,7 +85,7 @@
               <div class="col-sm-8">
                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Add DVD</button>
                 <div id="demo" class="collapse">
-                  <form action="/create" method="POST">
+                  <form action="/dvds/create" method="POST">
                     {{ csrf_field() }}
 
                     <div class="form-row">

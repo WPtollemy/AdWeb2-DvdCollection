@@ -40,6 +40,7 @@ class DvdsController extends Controller
         return redirect('/');
     }
 
+    //Gets the edit form to update films
     public function edit($id)
     {
         $dvd = Dvd::find($id);
@@ -54,6 +55,7 @@ class DvdsController extends Controller
         return redirect('/');
     }
 
+    //Home page gets all DVDs
     public function home()
     {
         $dvds = Dvd::all();
@@ -61,6 +63,7 @@ class DvdsController extends Controller
         return view('dvds.dvds', compact('dvds'));
     }
 
+    //Search is a search by title method
     public function search()
     {
         $dvds = new Dvd();
