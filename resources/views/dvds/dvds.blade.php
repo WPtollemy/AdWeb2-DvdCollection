@@ -85,17 +85,21 @@
               <div class="col-sm-8">
                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Add DVD</button>
                 <div id="demo" class="collapse">
-                  <form action="/dvds/create" method="POST">
+                  <form action="/dvds/create" method="POST" style="padding-bottom: 1em">
                     {{ csrf_field() }}
 
                     <div class="form-row">
-                      <div class="form-group col-md-6">
+                      <div class="form-group" style="padding-top: 1em">
                         <label for="inputTitle">Title</label>
                         <input class="form-control" id="inputTitle" name="title" placeholder="Title" required>
                       </div>
-                      <div class="form-group col-md-6">
+                      <div class="form-group">
                         <label for="inputDescription">Description</label>
                         <input class="form-control" id="inputDescription" name ="description" placeholder="Description" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputGenre">Genre</label>
+                        <input class="form-control" id="inputGenre" name ="genre" placeholder="Genre" required>
                       </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Add</button>

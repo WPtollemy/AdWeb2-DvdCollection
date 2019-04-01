@@ -12,12 +12,14 @@ class DvdsController extends Controller
     {
         request()->validate([
             'title'=> 'required',
-            'description' => ['required', 'min:4']
+            'description' => ['required', 'min:4'],
+            'genre'=> 'required'
         ]);
 
         $dvd = new Dvd();
         $dvd->title = request('title');
         $dvd->description = request('description');
+        $dvd->genre = request('genre');
         $dvd->save();
 
         return redirect('/');;
