@@ -140,6 +140,7 @@
                 @endforeach
               </tbody>
             </table>
+            {{ $dvds->onEachSide(3)->links() }}
           </div>
         </main>
     </div>

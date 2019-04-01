@@ -61,7 +61,7 @@ class DvdsController extends Controller
     //Home page gets all DVDs
     public function home()
     {
-        $dvds = Dvd::all();
+        $dvds = Dvd::paginate(9);
 
         return view('dvds.dvds', compact('dvds'));
     }
