@@ -61,7 +61,7 @@ class DvdsController extends Controller
     //Home page gets all DVDs
     public function home()
     {
-        $dvds = Dvd::paginate(9);
+        $dvds = Dvd::where('ownerId', auth()->id())->paginate(9);
 
         return view('dvds.dvds', compact('dvds'));
     }
@@ -78,7 +78,7 @@ class DvdsController extends Controller
         }
 
         //Search for similar values not exact
-        $dvds = $dvds->where('title', 'LIKE', '%'.$searchKey.'%')->paginate(9); 
+        $dvds = $dvds->where('ownerId', auth()->id())->where('title', 'LIKE', '%'.$searchKey.'%')->paginate(9); 
 
         return view('dvds.dvds', compact('dvds'));
     }
