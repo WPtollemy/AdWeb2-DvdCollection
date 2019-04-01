@@ -50,6 +50,8 @@ class DvdsController extends Controller
     {
         $dvd = Dvd::find($id);
 
+        $this->authorize('update', $dvd);
+
         return view('dvds.edit', compact('dvd'));
     }
 
