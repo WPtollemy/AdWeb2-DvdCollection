@@ -132,6 +132,7 @@
                   <th scope="row">{{ $dvd->id }}</th>
                   <td>{{ $dvd->title }}</td>
                   <td>{{ $dvd->description }}</td>
+                  <td>{{ $dvd->genre }}</td>
                   <td>
                     <a href="{{ url('/dvds/' . $dvd->id . '/edit') }}" class="btn btn-default">Edit</a>
                   </td>
