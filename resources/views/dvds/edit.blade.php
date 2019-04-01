@@ -94,6 +94,10 @@
                     <label class="control-label" for="inputDescription">Description</label>
                     <input class="form-control" id="inputDescription" name ="description" placeholder="Description" required value="{{ $dvd->description }}">
                   </div>
+                  <div class="form-group {{ $errors->has('genre') ? 'has-error' : '' }}">
+                    <label class="control-label" for="inputGenre">Genre</label>
+                    <input class="form-control" id="inputGenre" name ="genre" placeholder="Genre" required value="{{ $dvd->genre }}">
+                  </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Update DVD</button>
               </form>

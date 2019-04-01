@@ -36,6 +36,7 @@ class DvdsController extends Controller
 
         $dvd->title = request('title');
         $dvd->description = request('description');
+        $dvd->genre = request('genre');
 
         $dvd->save();
 
