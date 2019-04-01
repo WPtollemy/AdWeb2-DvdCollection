@@ -78,7 +78,7 @@ class DvdsController extends Controller
         }
 
         //Search for similar values not exact
-        $dvds = $dvds->where('title', 'LIKE', '%'.$searchKey.'%')->get(); 
+        $dvds = $dvds->where('title', 'LIKE', '%'.$searchKey.'%')->paginate(9); 
 
         return view('dvds.dvds', compact('dvds'));
     }
