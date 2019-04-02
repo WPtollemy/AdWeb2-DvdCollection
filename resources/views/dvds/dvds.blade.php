@@ -142,6 +142,8 @@
             </table>
             {{ $dvds->onEachSide(3)->links() }}
           </div>
+          <div id="chart-div"></div>
+          @donutchart('Films', 'chart-div')
         </main>
     </div>
 </body>

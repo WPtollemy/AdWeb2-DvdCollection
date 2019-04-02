@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Dvd;
+use Khill\Lavacharts\Lavacharts;
 
 class DvdsController extends Controller
 {
@@ -66,6 +67,27 @@ class DvdsController extends Controller
     public function home()
     {
         $dvds = Dvd::where('ownerId', auth()->id())->paginate(9);
+        $userDvds = Dvd::where('ownerId', auth()->id())->get();
+
+        $genres = array();
+        foreach ($userDvds as $dvd) {
+            if (!array_key_exists($dvd->genre, $genres))
+                $genres[$dvd->genre] = 1;
+            else
+                $genres[$dvd->genre] += 1;
+        }
+
+        $genreCount = \Lava::DataTable();
+        $genreCount->addStringColumn('Genre')
+            ->addNumberColumn('Amount of Films');
+
+        foreach ($genres as $genre => $count) {
+            $genreCount->addRow([$genre, $count]);
+        }
+
+        \Lava::DonutChart('Films', $genreCount, [
+            'title' => 'Number of Films per Genre'
+        ]);
 
         return view('dvds.dvds', compact('dvds'));
     }
