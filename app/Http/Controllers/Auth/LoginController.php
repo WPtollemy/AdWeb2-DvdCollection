@@ -57,6 +57,11 @@ class LoginController extends Controller
      */
     public function handleProviderCallback($provider)
     {
+        //Ensure user actually authorized the request
+        if (request('code') == null) {
+            return redirect('\login');
+        }
+
         $user = Socialite::driver($provider)->user();
 
         $authUser = $this->findOrCreateUser($user);
