@@ -167,6 +167,7 @@ return [
          */
         Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        \SocialiteProviders\Manager\ServiceProvider::class,
 
         /*
          * Application Service Providers...

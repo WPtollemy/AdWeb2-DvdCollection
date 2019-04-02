@@ -63,9 +63,10 @@
                                     </a>
                                 @endif
                             </div>
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col-md-12 offset-md-2">
                                 <a href="{{ url('/login/github') }}" class="btn btn-default">Login with Github</a>
                                 <a href="{{ url('/login/facebook') }}" class="btn btn-default">Login with Facebook</a>
+                                <a href="{{ url('/login/discord') }}" class="btn btn-default">Login with Discord</a>
                             </div>
                         </div>
                     </form>
