@@ -65,6 +65,7 @@
                             </div>
                             <div class="col-md-8 offset-md-4">
                                 <a href="{{ url('/login/github') }}" class="btn btn-default">Login with Github</a>
+                                <a href="{{ url('/login/facebook') }}" class="btn btn-default">Login with Facebook</a>
                             </div>
                         </div>
                     </form>
