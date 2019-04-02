@@ -41,23 +41,23 @@ class LoginController extends Controller
     }
 
     /**
-     * Redirect the user to the GitHub authentication page.
+     * Redirect the user to the providers authentication page.
      *
      * @return \Illuminate\Http\Response
      */
-    public function redirectToProvider()
+    public function redirectToProvider($provider)
     {
-        return Socialite::driver('github')->redirect();
+        return Socialite::driver($provider)->redirect();
     }
 
     /**
-     * Obtain the user information from GitHub.
+     * Obtain the user information from provider.
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback($provider)
     {
-        $user = Socialite::driver('github')->user();
+        $user = Socialite::driver($provider)->user();
 
         $authUser = $this->findOrCreateUser($user);
         Auth::login($authUser, true);
