@@ -34,3 +34,6 @@ Route::delete('dvds/{dvd}', 'DvdsController@destroy')->middleware('auth');
 Route::get('/search', 'DvdsController@search')->middleware('auth');
 
 Auth::routes();
+
+Route::get('login/github', 'Auth\LoginController@redirectToProvider');
+Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');

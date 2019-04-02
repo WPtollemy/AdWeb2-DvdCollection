@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
+use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Socialite;
 
 class LoginController extends Controller
 {
@@ -16,7 +19,7 @@ class LoginController extends Controller
     | redirecting them to your home screen. The controller uses a trait
     | to conveniently provide its functionality to your applications.
     |
-    */
+     */
 
     use AuthenticatesUsers;
 
@@ -36,4 +39,42 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function redirectToProvider()
+    {
+        return Socialite::driver('github')->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallback()
+    {
+        $user = Socialite::driver('github')->user();
+
+        $authUser = $this->findOrCreateUser($user);
+        Auth::login($authUser, true);
+        return redirect($this->redirectTo);
+    }
+
+    public function findOrCreateUser($user)
+    {
+        $authUser = User::where('email', $user->email)->first();
+        if ($authUser) {
+            return $authUser;
+        }
+
+        return User::create([
+            'name'     => $user->name,
+            'email'    => $user->email,
+        ]);
+    }
+
 }
