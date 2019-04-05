@@ -4,21 +4,21 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class daily-report extends Command
+class DailyReport extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'report:daily-report';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Command to mail a report showing daily statistics';
 
     /**
      * Create a new command instance.
@@ -38,5 +38,9 @@ class daily-report extends Command
     public function handle()
     {
         //
+        Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
+        {
+            $message->to('willpiears@hotmail.co.uk');
+        });
     }
 }
