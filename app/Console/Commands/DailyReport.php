@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\DailyReport as DailyReportMail;
 
 class DailyReport extends Command
 {
@@ -38,9 +40,8 @@ class DailyReport extends Command
     public function handle()
     {
         //
-        Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
-        {
-            $message->to('willpiears@hotmail.co.uk');
-        });
+        Mail::to('willpiears@hotmail.co.uk')->send(
+            new DailyReportMail()
+        );
     }
 }
