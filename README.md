@@ -18,7 +18,7 @@ Pagination: Happens automatically when more than 9 DVDs are present on the home 
 
 Emailing: Ability to send emails. Used through:
 Command - Sends email to admin (me) of new user count, new dvd count.
-Scheduled task: Above scheduled to go process every day.
+Scheduled task: Above scheduled to go process every day at 6AM.
 
 Libraries:
 Lavacharts
