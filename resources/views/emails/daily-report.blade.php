@@ -1,11 +1,10 @@
 @component('mail::message')
 # Introduction
 
-The body of your message.
+Here are the todays new user count and dvd count.
 
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
+New User Count:  {{ $dailyUsers }}<br>
+Dvd Count:  {{ $dailyDvds }}<br>
 
 Thanks,<br>
 {{ config('app.name') }}
