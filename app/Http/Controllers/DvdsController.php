@@ -106,6 +106,26 @@ class DvdsController extends Controller
         //Search for similar values not exact
         $dvds = $dvds->where('ownerId', auth()->id())->where('title', 'LIKE', '%'.$searchKey.'%')->paginate(9); 
 
+        $genres = array();
+        foreach ($dvds as $dvd) {
+            if (!array_key_exists($dvd->genre, $genres))
+                $genres[$dvd->genre] = 1;
+            else
+                $genres[$dvd->genre] += 1;
+        }
+
+        $genreCount = \Lava::DataTable();
+        $genreCount->addStringColumn('Genre')
+            ->addNumberColumn('Amount of Films');
+
+        foreach ($genres as $genre => $count) {
+            $genreCount->addRow([$genre, $count]);
+        }
+
+        \Lava::DonutChart('Films', $genreCount, [
+            'title' => 'Number of Films per Genre'
+        ]);
+
         return view('dvds.dvds', compact('dvds'));
     }
 }
